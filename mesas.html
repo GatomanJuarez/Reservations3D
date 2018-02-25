@@ -23,25 +23,438 @@
     <script src="js/TrackballControls.js"></script>
     <script src="JS/threex.domevents.js"></script>
 
-
     <script>
         Physijs.scripts.worker = 'JS/physijs_worker.js';
         Physijs.scripts.ammo = 'ammo.js';
         var camera, controls, silla, silla_material, scene, renderer, ground_material, ground, mesa, mesa_material;
         var domEvents, silla_material_alt, setMousePosition, object, mouse_position;
-        var posicionX, posicionY = 6, posicionZ, rotacionY, identificadorSilla;
+        var posicionX, posicionY = 6,
+            posicionZ, rotacionY, identificadorSilla;
         var posicionXMesa, posicionZMesa, posicionYMesa;
         posicionXValor = [-25, -45, -35, -45, -25, -35, -17, -17, -17, -57, -57, -57, 35, 25, 45, 25, 45, 35, 55, 55, 55, 15, 15, 15];
         posicionZValor = [5, 5, 5, 55, 55, 55, 30, 20, 40, 20, 40, 30, 5, 5, 5, 55, 55, 55, 30, 20, 40, 20, 40, 30];
         rotacionYValor = [0, 0, 0, 185.35, 185.35, 185.35, -190.1, -190.1, -190.1, 190.1, 190.1, 190.1, 0, 0, 0, 185.35, 185.35, 185.35, -190.1, -190.1, -190.1, 190.1, 190.1, 190.1];
         identificadorSillaValor = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
-        posicionYMesaValor = [6,6];
-        posicionXMesaValor = [-37,35];
-        posicionZMesaValor =  [30,30];
+        posicionYMesaValor = [6, 6];
+        posicionXMesaValor = [-37, 35];
+        posicionZMesaValor = [30, 30];
         identificadoVector = [];
+        ponerSilla = [];
+        var reservadoSilla1, reservadoSilla2, reservadoSilla3, reservadoSilla4, reservadoSilla5, reservadoSilla6;
+        var reservadoSilla7, reservadoSilla8, reservadoSilla9, reservadoSilla10, reservadoSilla11, reservadoSilla12;
+        var reservadoSilla13, reservadoSilla14, reservadoSilla15, reservadoSilla16, reservadoSilla17, reservadoSilla18;
+        var reservadoSilla19, reservadoSilla20, reservadoSilla21, reservadoSilla22, reservadoSilla23, reservadoSilla24;
+
+        function leeArchivo1(file) {
+            var archivo = new XMLHttpRequest();
+            archivo.open("GET", file, false);
+            archivo.onreadystatechange = function() {
+                if (archivo.readyState === 4) {
+                    if (archivo.status === 200 || archivo.status == 0) {
+                        var Texto = archivo.responseText;
+                        //alert(Texto);
+                        reservadoSilla1 = Texto;
+                        ponerSilla[0] = Texto;
+                    }
+                }
+            }
+            archivo.send(null);
+        }
+
+        function leeArchivo2(file) {
+            var archivo = new XMLHttpRequest();
+            archivo.open("GET", file, false);
+            archivo.onreadystatechange = function() {
+                if (archivo.readyState === 4) {
+                    if (archivo.status === 200 || archivo.status == 0) {
+                        var Texto = archivo.responseText;
+                        //alert(Texto);
+                        reservadoSilla2 = Texto;
+                        ponerSilla[1] = Texto;
+                    }
+                }
+            }
+            archivo.send(null);
+        }
+
+        function leeArchivo3(file) {
+            var archivo = new XMLHttpRequest();
+            archivo.open("GET", file, false);
+            archivo.onreadystatechange = function() {
+                if (archivo.readyState === 4) {
+                    if (archivo.status === 200 || archivo.status == 0) {
+                        var Texto = archivo.responseText;
+                        //alert(Texto);
+                        reservadoSilla3 = Texto;
+                        ponerSilla[2] = Texto;
+                    }
+                }
+            }
+            archivo.send(null);
+        }
+
+        function leeArchivo4(file) {
+            var archivo = new XMLHttpRequest();
+            archivo.open("GET", file, false);
+            archivo.onreadystatechange = function() {
+                if (archivo.readyState === 4) {
+                    if (archivo.status === 200 || archivo.status == 0) {
+                        var Texto = archivo.responseText;
+                        //alert(Texto);
+                        reservadoSilla4 = Texto;
+                        ponerSilla[3] = Texto;
+                    }
+                }
+            }
+            archivo.send(null);
+        }
+
+        function leeArchivo5(file) {
+            var archivo = new XMLHttpRequest();
+            archivo.open("GET", file, false);
+            archivo.onreadystatechange = function() {
+                if (archivo.readyState === 4) {
+                    if (archivo.status === 200 || archivo.status == 0) {
+                        var Texto = archivo.responseText;
+                        //alert(Texto);
+                        reservadoSilla5 = Texto;
+                        ponerSilla[4] = Texto;
+                    }
+                }
+            }
+            archivo.send(null);
+        }
+
+        function leeArchivo6(file) {
+            var archivo = new XMLHttpRequest();
+            archivo.open("GET", file, false);
+            archivo.onreadystatechange = function() {
+                if (archivo.readyState === 4) {
+                    if (archivo.status === 200 || archivo.status == 0) {
+                        var Texto = archivo.responseText;
+                        //alert(Texto);
+                        reservadoSilla6 = Texto;
+                        ponerSilla[5] = Texto;
+                    }
+                }
+            }
+            archivo.send(null);
+        }
+
+        function leeArchivo7(file) {
+            var archivo = new XMLHttpRequest();
+            archivo.open("GET", file, false);
+            archivo.onreadystatechange = function() {
+                if (archivo.readyState === 4) {
+                    if (archivo.status === 200 || archivo.status == 0) {
+                        var Texto = archivo.responseText;
+                        //alert(Texto);
+                        reservadoSilla7 = Texto;
+                        ponerSilla[6] = Texto;
+                    }
+                }
+            }
+            archivo.send(null);
+        }
+
+        function leeArchivo8(file) {
+            var archivo = new XMLHttpRequest();
+            archivo.open("GET", file, false);
+            archivo.onreadystatechange = function() {
+                if (archivo.readyState === 4) {
+                    if (archivo.status === 200 || archivo.status == 0) {
+                        var Texto = archivo.responseText;
+                        //alert(Texto);
+                        reservadoSilla8 = Texto;
+                        ponerSilla[7] = Texto;
+                    }
+                }
+            }
+            archivo.send(null);
+        }
+
+        function leeArchivo9(file) {
+            var archivo = new XMLHttpRequest();
+            archivo.open("GET", file, false);
+            archivo.onreadystatechange = function() {
+                if (archivo.readyState === 4) {
+                    if (archivo.status === 200 || archivo.status == 0) {
+                        var Texto = archivo.responseText;
+                        //alert(Texto);
+                        reservadoSilla9 = Texto;
+                        ponerSilla[8] = Texto;
+                    }
+                }
+            }
+            archivo.send(null);
+        }
+
+        function leeArchivo10(file) {
+            var archivo = new XMLHttpRequest();
+            archivo.open("GET", file, false);
+            archivo.onreadystatechange = function() {
+                if (archivo.readyState === 4) {
+                    if (archivo.status === 200 || archivo.status == 0) {
+                        var Texto = archivo.responseText;
+                        //alert(Texto);
+                        reservadoSilla10 = Texto;
+                        ponerSilla[9] = Texto;
+                    }
+                }
+            }
+            archivo.send(null);
+        }
+
+        function leeArchivo11(file) {
+            var archivo = new XMLHttpRequest();
+            archivo.open("GET", file, false);
+            archivo.onreadystatechange = function() {
+                if (archivo.readyState === 4) {
+                    if (archivo.status === 200 || archivo.status == 0) {
+                        var Texto = archivo.responseText;
+                        //alert(Texto);
+                        reservadoSilla11 = Texto;
+                        ponerSilla[10] = Texto;
+                    }
+                }
+            }
+            archivo.send(null);
+        }
+
+        function leeArchivo12(file) {
+            var archivo = new XMLHttpRequest();
+            archivo.open("GET", file, false);
+            archivo.onreadystatechange = function() {
+                if (archivo.readyState === 4) {
+                    if (archivo.status === 200 || archivo.status == 0) {
+                        var Texto = archivo.responseText;
+                        //alert(Texto);
+                        reservadoSilla12 = Texto;
+                        ponerSilla[11] = Texto;
+                    }
+                }
+            }
+            archivo.send(null);
+        }
+
+        function leeArchivo13(file) {
+            var archivo = new XMLHttpRequest();
+            archivo.open("GET", file, false);
+            archivo.onreadystatechange = function() {
+                if (archivo.readyState === 4) {
+                    if (archivo.status === 200 || archivo.status == 0) {
+                        var Texto = archivo.responseText;
+                        //alert(Texto);
+                        reservadoSilla13 = Texto;
+                        ponerSilla[12] = Texto;
+                    }
+                }
+            }
+            archivo.send(null);
+        }
+
+        function leeArchivo14(file) {
+            var archivo = new XMLHttpRequest();
+            archivo.open("GET", file, false);
+            archivo.onreadystatechange = function() {
+                if (archivo.readyState === 4) {
+                    if (archivo.status === 200 || archivo.status == 0) {
+                        var Texto = archivo.responseText;
+                        //alert(Texto);
+                        reservadoSilla14 = Texto;
+                        ponerSilla[13] = Texto;
+                    }
+                }
+            }
+            archivo.send(null);
+        }
+
+        function leeArchivo15(file) {
+            var archivo = new XMLHttpRequest();
+            archivo.open("GET", file, false);
+            archivo.onreadystatechange = function() {
+                if (archivo.readyState === 4) {
+                    if (archivo.status === 200 || archivo.status == 0) {
+                        var Texto = archivo.responseText;
+                        //alert(Texto);
+                        reservadoSilla15 = Texto;
+                        ponerSilla[14] = Texto;
+                    }
+                }
+            }
+            archivo.send(null);
+        }
+
+        function leeArchivo16(file) {
+            var archivo = new XMLHttpRequest();
+            archivo.open("GET", file, false);
+            archivo.onreadystatechange = function() {
+                if (archivo.readyState === 4) {
+                    if (archivo.status === 200 || archivo.status == 0) {
+                        var Texto = archivo.responseText;
+                        //alert(Texto);
+                        reservadoSilla16 = Texto;
+                        ponerSilla[15] = Texto;
+                    }
+                }
+            }
+            archivo.send(null);
+        }
+
+        function leeArchivo17(file) {
+            var archivo = new XMLHttpRequest();
+            archivo.open("GET", file, false);
+            archivo.onreadystatechange = function() {
+                if (archivo.readyState === 4) {
+                    if (archivo.status === 200 || archivo.status == 0) {
+                        var Texto = archivo.responseText;
+                        //alert(Texto);
+                        reservadoSilla17 = Texto;
+                        ponerSilla[16] = Texto;
+                    }
+                }
+            }
+            archivo.send(null);
+        }
+
+        function leeArchivo18(file) {
+            var archivo = new XMLHttpRequest();
+            archivo.open("GET", file, false);
+            archivo.onreadystatechange = function() {
+                if (archivo.readyState === 4) {
+                    if (archivo.status === 200 || archivo.status == 0) {
+                        var Texto = archivo.responseText;
+                        //alert(Texto);
+                        reservadoSilla18 = Texto;
+                        ponerSilla[17] = Texto;
+                    }
+                }
+            }
+            archivo.send(null);
+        }
+
+        function leeArchivo19(file) {
+            var archivo = new XMLHttpRequest();
+            archivo.open("GET", file, false);
+            archivo.onreadystatechange = function() {
+                if (archivo.readyState === 4) {
+                    if (archivo.status === 200 || archivo.status == 0) {
+                        var Texto = archivo.responseText;
+                        //alert(Texto);
+                        reservadoSilla19 = Texto;
+                        ponerSilla[18] = Texto;
+                    }
+                }
+            }
+            archivo.send(null);
+        }
+
+        function leeArchivo20(file) {
+            var archivo = new XMLHttpRequest();
+            archivo.open("GET", file, false);
+            archivo.onreadystatechange = function() {
+                if (archivo.readyState === 4) {
+                    if (archivo.status === 200 || archivo.status == 0) {
+                        var Texto = archivo.responseText;
+                        //alert(Texto);
+                        reservadoSilla20 = Texto;
+                        ponerSilla[19] = Texto;
+                    }
+                }
+            }
+            archivo.send(null);
+        }
+
+        function leeArchivo21(file) {
+            var archivo = new XMLHttpRequest();
+            archivo.open("GET", file, false);
+            archivo.onreadystatechange = function() {
+                if (archivo.readyState === 4) {
+                    if (archivo.status === 200 || archivo.status == 0) {
+                        var Texto = archivo.responseText;
+                        //alert(Texto);
+                        reservadoSilla21 = Texto;
+                        ponerSilla[20] = Texto;
+                    }
+                }
+            }
+            archivo.send(null);
+        }
+
+        function leeArchivo22(file) {
+            var archivo = new XMLHttpRequest();
+            archivo.open("GET", file, false);
+            archivo.onreadystatechange = function() {
+                if (archivo.readyState === 4) {
+                    if (archivo.status === 200 || archivo.status == 0) {
+                        var Texto = archivo.responseText;
+                        //alert(Texto);
+                        reservadoSilla22 = Texto;
+                        ponerSilla[21] = Texto;
+                    }
+                }
+            }
+            archivo.send(null);
+        }
+
+        function leeArchivo23(file) {
+            var archivo = new XMLHttpRequest();
+            archivo.open("GET", file, false);
+            archivo.onreadystatechange = function() {
+                if (archivo.readyState === 4) {
+                    if (archivo.status === 200 || archivo.status == 0) {
+                        var Texto = archivo.responseText;
+                        //alert(Texto);
+                        reservadoSilla23 = Texto;
+                        ponerSilla[22] = Texto;
+                    }
+                }
+            }
+            archivo.send(null);
+        }
+
+        function leeArchivo24(file) {
+            var archivo = new XMLHttpRequest();
+            archivo.open("GET", file, false);
+            archivo.onreadystatechange = function() {
+                if (archivo.readyState === 4) {
+                    if (archivo.status === 200 || archivo.status == 0) {
+                        var Texto = archivo.responseText;
+                        //alert(Texto);
+                        reservadoSilla24 = Texto;
+                        ponerSilla[23] = Texto;
+                    }
+                }
+            }
+            archivo.send(null);
+        }
 
         init = function() {
-
+            leeArchivo1("txt/reservados1.txt");
+            leeArchivo2("txt/reservados2.txt");
+            leeArchivo3("txt/reservados3.txt");
+            leeArchivo4("txt/reservados4.txt");
+            leeArchivo5("txt/reservados5.txt");
+            leeArchivo6("txt/reservados6.txt");
+            leeArchivo7("txt/reservados7.txt");
+            leeArchivo8("txt/reservados8.txt");
+            leeArchivo9("txt/reservados9.txt");
+            leeArchivo10("txt/reservados10.txt");
+            leeArchivo11("txt/reservados11.txt");
+            leeArchivo12("txt/reservados12.txt");
+            leeArchivo13("txt/reservados13.txt");
+            leeArchivo14("txt/reservados14.txt");
+            leeArchivo15("txt/reservados15.txt");
+            leeArchivo16("txt/reservados16.txt");
+            leeArchivo17("txt/reservados17.txt");
+            leeArchivo18("txt/reservados18.txt");
+            leeArchivo19("txt/reservados19.txt");
+            leeArchivo20("txt/reservados20.txt");
+            leeArchivo21("txt/reservados21.txt");
+            leeArchivo22("txt/reservados22.txt");
+            leeArchivo23("txt/reservados23.txt");
+            leeArchivo24("txt/reservados24.txt");
+            
             var container = document.getElementById('container');
             camera = new THREE.PerspectiveCamera(
                 15,
@@ -151,18 +564,46 @@
             mesa_material.map.wrapS = mesa_material.map.wrapT = THREE.RepeatWrapping;
             mesa_material.map.repeat.set(0.25, 0.25);
             ////////////////////////////////////////////////////////////////////////////////
+            console.log(ponerSilla[20] );
             for (var aux = 0; aux < posicionXValor.length; aux++) {
-                posicionX = posicionXValor[aux];
-                posicionZ = posicionZValor[aux];
-                rotacionY = rotacionYValor[aux];
-                identificadorSilla = identificadorSillaValor[aux];
-                construirSilla();     
+                if(reservadoSilla1 == 1 && aux == 0){}
+                else if(reservadoSilla2 == 1 && aux == 1){}
+                else if(reservadoSilla3 == 1 && aux == 2){}
+                else if(reservadoSilla4 == 1 && aux == 3){}
+                else if(reservadoSilla5 == 1 && aux == 4){}
+                else if(reservadoSilla6 == 1 && aux == 5){}
+                else if(reservadoSilla7 == 1 && aux == 6){}
+                else if(reservadoSilla8 == 1 && aux == 7){}
+                else if(reservadoSilla9 == 1 && aux == 8){}
+                else if(reservadoSilla10 == 1 && aux == 9){}
+                else if(reservadoSilla11 == 1 && aux == 10){}
+                else if(reservadoSilla12 == 1 && aux == 11){}
+                else if(reservadoSilla13 == 1 && aux == 12){}
+                else if(reservadoSilla14 == 1 && aux == 13){}
+                else if(reservadoSilla15 == 1 && aux == 14){}
+                else if(reservadoSilla16 == 1 && aux == 15){}
+                else if(reservadoSilla17 == 1 && aux == 16){}
+                else if(reservadoSilla18 == 1 && aux == 17){}
+                else if(reservadoSilla19 == 1 && aux == 18){}
+                else if(reservadoSilla20 == 1 && aux == 19){}
+                else if(reservadoSilla21 == 1 && aux == 20){}
+                else if(reservadoSilla22 == 1 && aux == 21){}
+                else if(reservadoSilla23 == 1 && aux == 22){}
+                else if(reservadoSilla24 == 1 && aux == 23){}
+
+               else{
+                    posicionX = posicionXValor[aux];
+                    posicionZ = posicionZValor[aux];
+                    rotacionY = rotacionYValor[aux];
+                    identificadorSilla = identificadorSillaValor[aux];
+                    construirSilla();
+               }
             }
             for (var aux = 0; aux < posicionXMesaValor.length; aux++) {
                 posicionXMesa = posicionXMesaValor[aux];
                 posicionZMesa = posicionZMesaValor[aux];
                 posicionYMesa = posicionYMesaValor[aux];
-                construirMesa();     
+                construirMesa();
             }
             construirGuardado();
             ////////////////////////////////////////////////////////////////////////////////
@@ -170,6 +611,7 @@
             requestAnimationFrame(render);
             scene.simulate();
         }
+
         function render() {
             requestAnimationFrame(render);
             renderer.render(scene, camera);
@@ -273,7 +715,7 @@
                 mesa.add(patas);
 
                 //Coloca la silla;
-                mesa.position.y = posicionYMesa;
+                mesa.position.y = 8;
                 mesa.position.x = posicionXMesa;
                 mesa.position.z = posicionZMesa;
                 scene.add(mesa);
@@ -387,11 +829,11 @@
                     console.log(mesa);
                     var mensaje2 = confirm("¿Deseas guardar tus reservaciones?");
                     if (mensaje2) {
-                        location.href ="guardar.php?identificador="+identificadoVector;
+                        location.href = "guardar.php?identificador=" + identificadoVector;
                     }
                 }, false)
             };
-            
+
             return ensamblar;
         })();
 

@@ -26,7 +26,7 @@ if ($conexion->connect_error) {
         $alumnos_insert = $conexion->query($sql_insert);
         $sql_alumnos = "SELECT * FROM alumnos";
         $res_alumnos = $conexion->query($sql_alumnos);
-        header('Location: mesas.html');
+        header('Location: obtener.php');
     } catch (Exception $e) {
         echo("Error al reservar. Lo sentimos");
     }

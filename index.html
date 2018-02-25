@@ -8,8 +8,22 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/estilillos.css">
 </head>
+<?php 
+$connect = mysql_connect("localhost", "username", "password") or die(mysql_error()); 
+mysql_select_db("a6113712_IESPADB", $connect) or die(mysql_error()); 
+if(is set($_POST['search'])) {
+
+    $sql = "SELECT * FROM datos ";
+    $search_termn =  mysql_real_escape_string("POST"['mesa']);
+    
+   
+}
+
+$query = mysql_query($sql) or die(mysql_error());
+?>
 
 <body background="images/first.jpg">
+
     <div class="jumbotron boxlogin fullscreen">
         <center>
             <form method="POST" name="flogin" id="flogin" action="login.php" id="form-graduacion" autocomplete="off">
@@ -19,6 +33,28 @@
                 <input type="password" name="clave" id="clave" class="form-control" placeholder="Clave" style="width: 80%" required>
                 <br>
                 <input type="submit" class="btn btn-success" value="Ingresar">
+                <table class="table table-striped">
+
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>NOMBRE</th>
+
+                        </tr>
+                    </thead>
+                    <?php foreach ($link->query('SELECT * from datos') as $row){ // aca puedes hacer la consulta e iterarla con each. ?>
+                    <tr>
+                        <td>
+                            <?php echo $row['id'] // aca te faltaba poner los echo para que se muestre el valor de la variable.  ?>
+                        </td>
+                        <td>
+                            <?php echo $row['mesa'] ?>
+                        </td>
+                    </tr>
+                    <?php
+                    }
+                ?>
+                </table>
         </center>
         </form>
     </div>

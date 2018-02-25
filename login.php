@@ -20,7 +20,7 @@ if ($conexion->connect_error) {
     $_SESSION['usuarioNombre']  = ($usuario[1]);
 
     if ($res_alumnos->num_rows > 0) {
-        header('Location: mesas.html');
+        header('Location: obtener.php');
     } else {
         echo "¡Tu Clave de Acceso es inválida!";
         header('Location: error.html');
