@@ -1,3 +1,17 @@
+<?php
+$servidor = "localhost";
+$usuario = "root";
+$contra = "";
+$bd = "reservations";
+
+// Creando la conexion a la bd
+$conexion = new mysqli($servidor, $usuario, $contra, $bd);
+$conexion->set_charset("utf8");
+// Checando la conexion
+if ($conexion->connect_error) {
+    die("Conexion Fallida: " . $conexion->connect_error);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,26 +20,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>3D with WebGL</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <style>
-        body {
-            margin: 0px;
-            background-color: #000000;
-            overflow: hidden;
-        }
         #html{
-            background-color: #00bcd4;
+            background-color: #26c6da;
 
+        }
+        
+        #usuario{
+            text-aling: left;
+        }
+        
+        .table{
+            width: 80%;
         }
     </style>
 </head>
 
 <body>
-    <div id="html">
-        <img src="pictures/logo.jpg" width="150">
-        <?php session_start(); ?>
-        <p><?php echo $_SESSION['usuarioNombre']; ?></p>
-    </div>
     <div id="container"></div>
+    <div id="html">
+        <center>
+            
+    <img src="pictures/logo.jpg" width="150">
+    <div id="usuario" style="font-weight: bold;">
+    <?php
+    session_start();
+    echo  "Hola a: ".$_SESSION['usuarioNombre'] ;
+    ?>
+    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Número de Mesa</th>
+                                <th>Reservado por</th>
+                            </tr>
+                        </thead>
+                        <?php foreach ($conexion->query('SELECT * from datos WHERE estado = 1') as $row){ // aca puedes hacer la consulta e iterarla con each. ?>
+                        <tr>
+                            <td>
+                                <?php echo $row['mesa'] ?>
+                            </td>
+                            <td>
+                                <?php echo $row['usuario'] ?>
+                            </td>
+                        </tr>
+                        <?php
+                    }
+                ?>
+                    </table>
+    </div>
+    </center>
+    </div>
     <script src="JS/three.min.js"></script>
     <script src="JS/physi.js"></script>
     <script src="js/TrackballControls.js"></script>
@@ -52,6 +98,13 @@
         var reservadoSilla7, reservadoSilla8, reservadoSilla9, reservadoSilla10, reservadoSilla11, reservadoSilla12;
         var reservadoSilla13, reservadoSilla14, reservadoSilla15, reservadoSilla16, reservadoSilla17, reservadoSilla18;
         var reservadoSilla19, reservadoSilla20, reservadoSilla21, reservadoSilla22, reservadoSilla23, reservadoSilla24;
+
+        function guardarReservaciones(){
+            var mensaje3 = confirm("¿Deseas guardar tus reservaciones?");
+                    if (mensaje3) {
+                        location.href = "guardar.php?identificador=" + identificadoVector;
+                    }
+        }
 
         function leeArchivo1(file) {
             var archivo = new XMLHttpRequest();
@@ -979,7 +1032,7 @@
 
                 domEvents.addEventListener(silla, 'click', function(event) {
                     console.log(silla);
-                    var mensaje = confirm("¿Deseas reservar esta mesa?");
+                    var mensaje = confirm("¿Deseas reservar este lugar?");
                     if (mensaje) {
                         cambiarMaterial(silla);
                         identificadoVector.push(silla.identificador);

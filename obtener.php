@@ -49,4 +49,4 @@ file_put_contents('txt/reservados24.txt', $estadoValor[23]."\r\n");
 }
 $conexion->close();
 var_dump($estadoValor);
-header("location:mesas.html");
+header("location:mesas.php");
